@@ -1,0 +1,3 @@
+# auto configure
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.wacai.springboot.dubbo.health.autocfg.DubboHealthIndicatorConfiguration
