@@ -18,19 +18,6 @@
         <java.version>1.8</java.version>
     </properties>
 
-    <distributionManagement>
-        <repository>
-            <id>deployment</id>
-            <name>挖财maven仓库</name>
-            <url>http://repo.caimi-inc.com/nexus/content/repositories/releases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>deployment</id>
-            <name>挖财maven仓库-SNAPSHOT</name>
-            <url>http://repo.caimi-inc.com/nexus/content/repositories/snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
-
     <dependencies>
         <dependency>
             <groupId>com.alibaba</groupId>
