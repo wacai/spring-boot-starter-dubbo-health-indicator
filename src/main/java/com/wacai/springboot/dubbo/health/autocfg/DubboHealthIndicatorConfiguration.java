@@ -25,9 +25,11 @@ public class DubboHealthIndicatorConfiguration {
 
         Map<String, HealthIndicator> indicators = new HashMap<>();
 
-        for (String key : references.keySet()) {
-            final ReferenceBean bean = references.get(key);
-            indicators.put(key.startsWith("&") ? key.replaceFirst("&", "") : key, new DubboHealthIndicator(bean));
+        if(references != null){
+            for (String key : references.keySet()) {
+                final ReferenceBean bean = references.get(key);
+                indicators.put(key.startsWith("&") ? key.replaceFirst("&", "") : key, new DubboHealthIndicator(bean));
+            }
         }
 
         return new CompositeHealthIndicator(healthAggregator, indicators);
