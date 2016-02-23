@@ -4,6 +4,7 @@ import com.alibaba.dubbo.config.spring.ReferenceBean;
 import com.alibaba.dubbo.rpc.service.EchoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.actuate.health.*;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,6 +14,7 @@ import java.util.Map;
 
 @Configuration
 @ConditionalOnClass(name = {"com.alibaba.dubbo.rpc.Exporter"})
+@ConditionalOnBean(ReferenceBean.class)
 public class DubboHealthIndicatorConfiguration {
     @Autowired
     HealthAggregator healthAggregator;
@@ -25,11 +27,9 @@ public class DubboHealthIndicatorConfiguration {
 
         Map<String, HealthIndicator> indicators = new HashMap<>();
 
-        if(references != null){
-            for (String key : references.keySet()) {
-                final ReferenceBean bean = references.get(key);
-                indicators.put(key.startsWith("&") ? key.replaceFirst("&", "") : key, new DubboHealthIndicator(bean));
-            }
+        for (String key : references.keySet()) {
+            final ReferenceBean bean = references.get(key);
+            indicators.put(key.startsWith("&") ? key.replaceFirst("&", "") : key, new DubboHealthIndicator(bean));
         }
 
         return new CompositeHealthIndicator(healthAggregator, indicators);

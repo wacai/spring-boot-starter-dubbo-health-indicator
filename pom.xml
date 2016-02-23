@@ -5,7 +5,7 @@
 
     <groupId>com.wacai</groupId>
     <artifactId>spring-boot-starter-dubbo-health-indicator</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.0</version>
     <description>dubbo的SpringBoot health check项目</description>
 
     <parent>

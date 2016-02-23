@@ -7,7 +7,7 @@
 <dependency>
     <groupId>com.wacai</groupId>
     <artifactId>spring-boot-starter-dubbo-health-indicator</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
 </dependency>
 ```
 
